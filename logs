@@ -1,0 +1,380 @@
+root [ / ]# exit     
+exit
+➜  ~ docker ps
+CONTAINER ID   IMAGE                COMMAND                  CREATED       STATUS                        PORTS      NAMES
+409b759f9bfb   postgres:16-alpine   "docker-entrypoint.s…"   5 weeks ago   Up About a minute (healthy)   5432/tcp   go-backend-db-1
+➜  ~ docker images
+                                                                                                    i Info →   U  In Use
+IMAGE                                                                   ID             DISK USAGE   CONTENT SIZE   EXTRA
+2tierwebapp-docker-k8s-helm-web:latest                                  d15718e563fd        262MB         57.1MB        
+boutique-microservices-auth:latest                                      61f45ed1f0e2        208MB         51.3MB        
+boutique-microservices-gateway:latest                                   131ebc09dbf5        212MB         51.8MB        
+boutique-microservices-order-service:latest                             382e48d9b523        211MB         51.8MB        
+boutique-microservices-orders:latest                                    f8da08df3e25        214MB         52.3MB        
+boutique-microservices-product-service:latest                           4553f65fe42c        268MB           69MB        
+boutique-microservices-user-service:latest                              8dba0ebcf0fb        212MB         51.8MB        
+busybox:latest                                                          fd8d9aa63ba2       6.22MB         1.92MB        
+docker/desktop-cloud-provider-kind:v0.5.0                               4ad59ce20658        574MB          150MB    U   
+docker/desktop-cloud-provider-kind:v0.6.0                               46d51b990e97        587MB          156MB        
+docker/desktop-containerd-registry-mirror:v0.0.3                        179a9ea3ae47       48.8MB         15.5MB    U   
+docker/desktop-containerd-registry-mirror:v0.0.4                        1de142695bb0       51.1MB         16.3MB        
+envoyproxy/envoy:v1.36.4                                                08acc53db6f4        233MB         58.8MB        
+envoyproxy/envoy:v1.36.7                                                29d778ba078e        239MB         60.5MB        
+flask-2tier-app:latest                                                  d58788fda62d        249MB         54.6MB        
+go-backend-server:latest                                                0f96d950cc1b       27.3MB         8.36MB    U   
+grafana/grafana:latest                                                  121a7a9ece6d       1.49GB          352MB        
+job-finder-backend:latest                                               cad84556c930        771MB          172MB        
+job-finder-frontend:latest                                              2ed76a0df54a         93MB         26.1MB        
+kindest/node:v1.34.3                                                    08497ee19eac       1.33GB          364MB    U   
+kindest/node:v1.36.1                                                    3489c7674813       1.27GB          350MB        
+kindest/node@sha256:3489c7674813ba5d8b1a9977baea8a6e553784dab7b84759d1014dbd78f7ebd5
+                                                                        3489c7674813       1.27GB          350MB        
+mcr.microsoft.com/azure-cli:azurelinux3.0                               933eb8dcb81a        870MB          147MB        
+mongo:latest@sha256:b8806ee8207318a30316eca72257da4c146025a80fdcdb4c597e596af9233ee3
+                                                                        b8806ee82073        321MB          321MB        
+mongo:latest@sha256:bac22ea7710d774103dcad3ec8ac13cba1eb378f488e3ce8a6b3a1adf2ba9dcc
+                                                                        bac22ea7710d        355MB          355MB        
+mongo:latest@sha256:e0ce8c35124d4a9f9785532d1f268f39e9728ffa1cb38f46fa482436424c4bd3
+                                                                        e0ce8c35124d        321MB          321MB        
+nginx:alpine                                                            54f2a904c251       92.6MB         26.8MB        
+postgres:14                                                             2f439458ab6a        650MB          161MB        
+postgres:15-alpine                                                      3d0f7584ed7d        408MB          114MB        
+postgres:16-alpine                                                      cf78e76683b9        411MB          115MB    U   
+postgres:latest                                                         1957b2ff3137        672MB          167MB        
+prom/prometheus:latest                                                  3c42b892cf72        335MB         98.1MB        
+snehagursal.azurecr.io/flask-2tier-app:v1                               d58788fda62d        249MB         54.6MB        
+snehagursale.azurecr.io/flask-2tier-app:v1                              2125ef967df7       54.4MB         54.4MB        
+➜  ~ clear
+
+➜  ~ docker ps -a
+CONTAINER ID   IMAGE                COMMAND                  CREATED       STATUS                   PORTS      NAMES
+669dd1a0b644   go-backend-server    "/bin/server"            5 weeks ago   Created                             go-backend-server-1
+409b759f9bfb   postgres:16-alpine   "docker-entrypoint.s…"   5 weeks ago   Up 2 minutes (healthy)   5432/tcp   go-backend-db-1
+➜  ~ docker run --rm -it mcr.microsoft.com/azure-cli:azurelinux3.0
+root [ / ]# azure cli
+bash: azure: command not found
+root [ / ]# az version
+{
+  "azure-cli": "2.91.0",
+  "azure-cli-core": "2.91.0",
+  "azure-cli-telemetry": "1.1.0",
+  "extensions": {}
+}
+root [ / ]# az login --use-device-code
+To sign in, use a web browser to open the page https://login.microsoft.com/device and enter the code D2H3K3PZ3 to authenticate.
+
+Retrieving tenants and subscriptions for the selection...
+
+[Tenant and subscription selection]
+
+No     Subscription name    Subscription ID                       Tenant
+-----  -------------------  ------------------------------------  -----------------
+[1] *  azurekmlprod         a2b28c85-1948-4263-90ca-bade2bac4df4  Default Directory
+
+The default is marked with an *; the default tenant is 'Default Directory' and subscription is 'azurekmlprod' (a2b28c85-1948-4263-90ca-bade2bac4df4).
+
+Select a subscription and tenant (Type a number or Enter for no changes): 1
+
+Tenant: Default Directory
+Subscription: azurekmlprod (a2b28c85-1948-4263-90ca-bade2bac4df4)
+
+[Announcements]
+With the new Azure CLI login experience, you can select the subscription you want to use more easily. Learn more about it and its configuration at https://go.microsoft.com/fwlink/?linkid=2271236
+
+If you encounter any problem, please open an issue at https://aka.ms/azclibug
+
+[Warning] The login output has been updated. Please be aware that it no longer displays the full list of available subscriptions by default.
+
+root [ / ]# az account show --output table
+EnvironmentName    HomeTenantId                          IsDefault    Name          State    TenantDefaultDomain                    TenantDisplayName    TenantId
+-----------------  ------------------------------------  -----------  ------------  -------  -------------------------------------  -------------------  ------------------------------------
+AzureCloud         30fe8ff1-adc6-444d-ba94-1238894df42c  True         azurekmlprod  Enabled  azurekmlprodkodekloud.onmicrosoft.com  Default Directory    30fe8ff1-adc6-444d-ba94-1238894df42c
+root [ / ]# az provider register --namespace Microsoft.App --wait
+(AuthorizationFailed) The client 'kk_lab_user_main-ec5bbc7badc74d18@azurekmlprodkodekloud.onmicrosoft.com' with object id 'ccf7b2f1-156e-4163-bbb8-6fc7ff554bc7' does not have authorization to perform action 'Microsoft.App/register/action' over scope '/subscriptions/a2b28c85-1948-4263-90ca-bade2bac4df4' or the scope is invalid. If access was recently granted, please refresh your credentials.
+Code: AuthorizationFailed
+Message: The client 'kk_lab_user_main-ec5bbc7badc74d18@azurekmlprodkodekloud.onmicrosoft.com' with object id 'ccf7b2f1-156e-4163-bbb8-6fc7ff554bc7' does not have authorization to perform action 'Microsoft.App/register/action' over scope '/subscriptions/a2b28c85-1948-4263-90ca-bade2bac4df4' or the scope is invalid. If access was recently granted, please refresh your credentials.
+root [ / ]# az account show --output table
+az provider show --namespace Microsoft.App --query registrationState --output tsv
+EnvironmentName    HomeTenantId                          IsDefault    Name          State    TenantDefaultDomain                    TenantDisplayName    TenantId
+-----------------  ------------------------------------  -----------  ------------  -------  -------------------------------------  -------------------  ------------------------------------
+AzureCloud         30fe8ff1-adc6-444d-ba94-1238894df42c  True         azurekmlprod  Enabled  azurekmlprodkodekloud.onmicrosoft.com  Default Directory    30fe8ff1-adc6-444d-ba94-1238894df42c
+Registered
+root [ / ]# az provider show --namespace Microsoft.App --query registrationState --output tsv
+Registered
+root [ / ]# az show resource-group
+'show' is misspelled or not recognized by the system.
+
+https://aka.ms/cli_ref
+Read more about the command in reference docs
+root [ / ]# az list resource-group
+'list' is misspelled or not recognized by the system.
+
+https://aka.ms/cli_ref
+Read more about the command in reference docs
+root [ / ]# az group list
+[
+  {
+    "id": "/subscriptions/a2b28c85-1948-4263-90ca-bade2bac4df4/resourceGroups/kml_rg_main-ec5bbc7badc74d18",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "kml_rg_main-ec5bbc7badc74d18",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  }
+]
+root [ / ]# export RESOURCE_GROUP=kml_rg_main-ec5bbc7badc74d18
+export LOCATION=eastus
+export ENVIRONMENT=aca-support-env
+export APP_NAME=aca-support-app
+root [ / ]# 
+root [ / ]# 
+root [ / ]# 
+root [ / ]# 
+root [ / ]# az containerapp env create \
+  --name "$ENVIRONMENT" \
+  --resource-group "$RESOURCE_GROUP" \
+  --location "$LOCATION" \
+  --logs-destination none
+(RequestDisallowedByPolicy) Resource 'aca-support-env' was disallowed by policy. Reasons: 'Allowed values Managed Environments: Name = 'container-app-env', Workload Profile = Consumption, Zone Redundancy = False | Container Apps: Min Replicas = 0, 1, Max Replicas = 0, 1, 2. Update configuration to comply.'. See error details for policy resource IDs.
+root [ / ]# export ENVIRONMENT=container-app-env
+root [ / ]# az containerapp env create   --name "$ENVIRONMENT"   --resource-group "$RESOURCE_GROUP"   --location "$LOCATION"   --logs-destination none
+\ Running ..^Croot [ / ]# 
+root [ / ]# 
+root [ / ]# 
+root [ / ]# az containerapp env show --name "$ENVIRONMENT" --resource-group "$RESOURCE_GROUP" --query "properties.provisioningState" --output tsv
+Waiting
+root [ / ]# export FQDN=$(az containerapp create \
+  --name "$APP_NAME" \
+  --resource-group "$RESOURCE_GROUP" \
+  --environment "$ENVIRONMENT" \
+  --image mcr.microsoft.com/k8se/quickstart:latest \
+  --ingress external \
+  --target-port 80 \
+  --min-replicas 0 \
+  --max-replicas 1 \
+  --query properties.configuration.ingress.fqdn \
+  --output tsv)
+
+echo "https://$FQDN"
+WARNING: 
+Container app created. Access your app at https://aca-support-app.calmsand-bb84095a.eastus.azurecontainerapps.io/
+
+https://aca-support-app.calmsand-bb84095a.eastus.azurecontainerapps.io
+root [ / ]# az containerapp ingress show \
+  --name "$APP_NAME" \
+  --resource-group "$RESOURCE_GROUP"
+{
+  "additionalPortMappings": null,
+  "allowInsecure": false,
+  "clientCertificateMode": null,
+  "corsPolicy": null,
+  "customDomains": null,
+  "exposedPort": 0,
+  "external": true,
+  "fqdn": "aca-support-app.calmsand-bb84095a.eastus.azurecontainerapps.io",
+  "ipSecurityRestrictions": null,
+  "stickySessions": null,
+  "targetPort": 80,
+  "traffic": [
+    {
+      "latestRevision": true,
+      "weight": 100
+    }
+  ],
+  "transport": "Auto"
+}
+root [ / ]# az containerapp ingress update \
+  --name "$APP_NAME" \
+  --resource-group "$RESOURCE_GROUP" \
+  --target-port 81
+
+Ingress Updated. Access your app at https://aca-support-app.calmsand-bb84095a.eastus.azurecontainerapps.io/
+
+{
+  "additionalPortMappings": null,
+  "allowInsecure": false,
+  "clientCertificateMode": null,
+  "corsPolicy": null,
+  "customDomains": null,
+  "exposedPort": 0,
+  "external": true,
+  "fqdn": "aca-support-app.calmsand-bb84095a.eastus.azurecontainerapps.io",
+  "ipSecurityRestrictions": null,
+  "stickySessions": null,
+  "targetPort": 81,
+  "traffic": [
+    {
+      "latestRevision": true,
+      "weight": 100
+    }
+  ],
+  "transport": "Auto"
+}
+root [ / ]# az containerapp logs show \
+  --name "$APP_NAME" \
+  --resource-group "$RESOURCE_GROUP" \
+  --type system \
+  --tail 50
+{"TimeStamp": "2026-10-06T11:59:29Z", "Type": "Normal", "ContainerAppName": null, "RevisionName": null, "ReplicaName": null, "Msg": "Connecting to the events collector...", "Reason": "StartingGettingEvents", "EventSource": "ContainerAppController", "Count": 1}
+{"TimeStamp": "2026-10-06T11:59:30Z", "Type": "Normal", "ContainerAppName": null, "RevisionName": null, "ReplicaName": null, "Msg": "Successfully connected to events server", "Reason": "ConnectedToEventsServer", "EventSource": "ContainerAppController", "Count": 1}
+{"TimeStamp": "2026-10-06 11:59:06.5941775 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 268}
+{"TimeStamp": "2026-10-06 11:59:07.5951838 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 269}
+{"TimeStamp": "2026-10-06 11:59:08.5954903 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 270}
+{"TimeStamp": "2026-10-06 11:59:09.5942392 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 271}
+{"TimeStamp": "2026-10-06 11:59:10.5947439 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 272}
+{"TimeStamp": "2026-10-06 11:59:11.5900718 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 273}
+{"TimeStamp": "2026-10-06 11:59:12.5917285 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 274}
+{"TimeStamp": "2026-10-06 11:59:13.5925589 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 275}
+{"TimeStamp": "2026-10-06 11:59:14.5953359 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 276}
+{"TimeStamp": "2026-10-06 11:59:15.5916496 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 277}
+{"TimeStamp": "2026-10-06 11:59:16.5938717 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 278}
+{"TimeStamp": "2026-10-06 11:59:17.5987909 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 279}
+{"TimeStamp": "2026-10-06 11:59:18.5950525 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 280}
+{"TimeStamp": "2026-10-06 11:59:19.5934742 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 281}
+{"TimeStamp": "2026-10-06 11:59:20.5942817 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 282}
+{"TimeStamp": "2026-10-06 11:59:21.5923644 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 283}
+{"TimeStamp": "2026-10-06 11:59:22.5930466 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 284}
+{"TimeStamp": "2026-10-06 11:59:23.5948755 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 285}
+{"TimeStamp": "2026-10-06 11:59:24.6024658 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 286}
+{"TimeStamp": "2026-10-06 11:59:25.5912509 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 287}
+{"TimeStamp": "2026-10-06 11:59:26.5920392 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 288}
+{"TimeStamp": "2026-10-06 11:59:27.5923703 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 289}
+{"TimeStamp": "2026-10-06 11:59:28.592244 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 290}
+{"TimeStamp": "2026-10-06 11:59:29.5897346 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-s2ttk", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 291}
+root [ / ]# az containerapp ingress show \
+  --name "$APP_NAME" \
+  --resource-group "$RESOURCE_GROUP" \
+  --output json
+{
+  "additionalPortMappings": null,
+  "allowInsecure": false,
+  "clientCertificateMode": null,
+  "corsPolicy": null,
+  "customDomains": null,
+  "exposedPort": 0,
+  "external": true,
+  "fqdn": "aca-support-app.calmsand-bb84095a.eastus.azurecontainerapps.io",
+  "ipSecurityRestrictions": null,
+  "stickySessions": null,
+  "targetPort": 81,
+  "traffic": [
+    {
+      "latestRevision": true,
+      "weight": 100
+    }
+  ],
+  "transport": "Auto"
+}
+root [ / ]# az containerapp revision list --name "$CONTAINER_APP_NAME" --resource-group "$RESOURCE_GROUP" --output table
+(ResourceNotFound) The Resource 'Microsoft.App/containerApps/revisions' under resource group 'kml_rg_main-ec5bbc7badc74d18' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
+root [ / ]# az containerapp show --name "$CONTAINER_APP_NAME" --resource-group "$RESOURCE_GROUP" --query "properties.template.containers[0].probes"
+root [ / ]# echo "App: $CONTAINER_APP_NAME"
+echo "Group: $RESOURCE_GROUP"
+App: 
+Group: kml_rg_main-ec5bbc7badc74d18
+root [ / ]# az containerapp show --name "$APP_NAME" --resource-group "$RESOURCE_GROUP" --query "properties.template.containers[0].probes"         
+root [ / ]# az containerapp revision list --name "$APP_NAME" --resource-group "$RESOURCE_GROUP" --output table
+CreatedTime                Active    Replicas    TrafficWeight    HealthState    ProvisioningState    Name
+-------------------------  --------  ----------  ---------------  -------------  -------------------  ------------------------
+2026-10-06T11:49:36+00:00  True      0           100              Unhealthy      Provisioned          aca-support-app--g9z80tu
+root [ / ]# az containerapp ingress update \
+  --name "$APP_NAME" \
+  --resource-group "$RESOURCE_GROUP" \
+  --target-port 80
+
+Ingress Updated. Access your app at https://aca-support-app.calmsand-bb84095a.eastus.azurecontainerapps.io/
+
+{
+  "additionalPortMappings": null,
+  "allowInsecure": false,
+  "clientCertificateMode": null,
+  "corsPolicy": null,
+  "customDomains": null,
+  "exposedPort": 0,
+  "external": true,
+  "fqdn": "aca-support-app.calmsand-bb84095a.eastus.azurecontainerapps.io",
+  "ipSecurityRestrictions": null,
+  "stickySessions": null,
+  "targetPort": 80,
+  "traffic": [
+    {
+      "latestRevision": true,
+      "weight": 100
+    }
+  ],
+  "transport": "Auto"
+}
+root [ / ]# az containerapp ingress show \
+  --name "$APP_NAME" \
+  --resource-group "$RESOURCE_GROUP" \
+  --output json
+{
+  "additionalPortMappings": null,
+  "allowInsecure": false,
+  "clientCertificateMode": null,
+  "corsPolicy": null,
+  "customDomains": null,
+  "exposedPort": 0,
+  "external": true,
+  "fqdn": "aca-support-app.calmsand-bb84095a.eastus.azurecontainerapps.io",
+  "ipSecurityRestrictions": null,
+  "stickySessions": null,
+  "targetPort": 80,
+  "traffic": [
+    {
+      "latestRevision": true,
+      "weight": 100
+    }
+  ],
+  "transport": "Auto"
+}
+root [ / ]# az containerapp update \
+  --name "$APP_NAME" \
+  --resource-group "$RESOURCE_GROUP" \
+  --image registry.invalid/quickstart:broken
+\ Running ..Failed to provision revision for container app 'aca-support-app'. Error details: The following field(s) are either invalid or missing. Field 'template.containers.aca-support-app.image' is invalid with details: 'Invalid value: "registry.invalid/quickstart:broken": failed to resolve registry 'registry.invalid': lookup registry.invalid on 100.100.251.53:53: no such host';..
+root [ / ]# az containerapp revision list \
+  --name "$APP_NAME" \
+  --resource-group "$RESOURCE_GROUP" \
+  --all \
+  --output table
+CreatedTime                Active    Replicas    TrafficWeight    HealthState    ProvisioningState    Name
+-------------------------  --------  ----------  ---------------  -------------  -------------------  ------------------------
+2026-10-06T11:49:36+00:00  True      1           100              Healthy        Provisioned          aca-support-app--g9z80tu
+root [ / ]# date
+Tue Oct  6 12:25:00 UTC 2026
+root [ / ]# az containerapp logs show \
+  --name "$APP_NAME" \
+  --resource-group "$RESOURCE_GROUP" \
+  --type system \
+  --tail 50
+{"TimeStamp": "2026-10-06T12:25:17Z", "Type": "Normal", "ContainerAppName": null, "RevisionName": null, "ReplicaName": null, "Msg": "Connecting to the events collector...", "Reason": "StartingGettingEvents", "EventSource": "ContainerAppController", "Count": 1}
+{"TimeStamp": "2026-10-06T12:25:17Z", "Type": "Normal", "ContainerAppName": null, "RevisionName": null, "ReplicaName": null, "Msg": "Successfully connected to events server", "Reason": "ConnectedToEventsServer", "EventSource": "ContainerAppController", "Count": 1}
+{"TimeStamp": "2026-10-06 12:18:53.7610812 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-plnlf", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 210}
+{"TimeStamp": "2026-10-06 12:18:54.7626849 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-plnlf", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 211}
+{"TimeStamp": "2026-10-06 12:18:45.1528347 +0000 UTC", "Type": "Normal", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7fd878bc98-c6n99", "Msg": "Successfully pulled image \"mcr.microsoft.com/k8se/quickstart:latest\" in 1.67s. Image size: 42991616 bytes.", "Reason": "PulledImage", "EventSource": "ContainerAppController", "Count": 1}
+{"TimeStamp": "2026-10-06 12:18:55.7666183 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-plnlf", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 212}
+{"TimeStamp": "2026-10-06 12:18:56.1799872 +0000 UTC", "Type": "Normal", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7fd878bc98-c6n99", "Msg": "Created container 'aca-support-app'", "Reason": "ContainerCreated", "EventSource": "ContainerAppController", "Count": 1}
+{"TimeStamp": "2026-10-06 12:18:56.1886604 +0000 UTC", "Type": "Normal", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7fd878bc98-c6n99", "Msg": "Started container 'aca-support-app'", "Reason": "ContainerStarted", "EventSource": "ContainerAppController", "Count": 1}
+{"TimeStamp": "2026-10-06 12:18:56.7705092 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-plnlf", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 213}
+{"TimeStamp": "2026-10-06 12:18:57.7723843 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-plnlf", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 214}
+{"TimeStamp": "2026-10-06 12:18:58.7653257 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-plnlf", "Msg": "Probe of StartUp failed with status code: 1", "Reason": "ProbeFailed", "EventSource": "ContainerAppController", "Count": 215}
+{"TimeStamp": "2026-10-06 12:18:58.90071 +0000 UTC", "Type": "Warning", "ContainerAppName": "aca-support-app", "RevisionName": "aca-support-app--g9z80tu", "ReplicaName": "aca-support-app--g9z80tu-7ccb5b978c-plnlf", "Msg": "Container 'aca-support-app' was terminated with exit code '' and reason 'ManuallyStopped'", "Reason": "ContainerTerminated", "EventSource": "ContainerAppController", "Count": 1}
+root [ / ]# date
+Tue Oct  6 12:25:55 UTC 2026
+root [ / ]# az containerapp revision list \
+  --name "$APP_NAME" \
+  --resource-group "$RESOURCE_GROUP" \
+  --all \
+  --output table
+CreatedTime                Active    Replicas    TrafficWeight    HealthState    ProvisioningState    Name
+-------------------------  --------  ----------  ---------------  -------------  -------------------  ------------------------
+2026-10-06T11:49:36+00:00  True      1           100              Healthy        Provisioned          aca-support-app--g9z80tu
+root [ / ]# az containerapp revision list   --name "$APP_NAME"   --resource-group "$RESOURCE_GROUP"   --all   --output table
+CreatedTime                Active    Replicas    TrafficWeight    HealthState    ProvisioningState    Name
+-------------------------  --------  ----------  ---------------  -------------  -------------------  ------------------------
+2026-10-06T11:49:36+00:00  True      1           100              Healthy        Provisioned          aca-support-app--g9z80tu
+root [ / ]# 
